@@ -11,10 +11,7 @@ export default class MathCalc extends Character {
   }
 
   get stoned() {
-    if (this.tempStoned === true) {
-      return Math.log2(this.distance) * 5;
-    }
-    return 0;
+    return this.tempStoned;
   }
 
   set attack(attack) {
@@ -22,6 +19,9 @@ export default class MathCalc extends Character {
   }
 
   get attack() {
-    return this.tempAttack * ((110 - (this.distance * 10)) / 100) - this.stoned;
+    if (this.stoned === true) {
+      return this.tempAttack * ((110 - (this.distance * 10)) / 100) - Math.log2(this.distance) * 5;
+    }
+    return this.tempAttack * ((110 - (this.distance * 10)) / 100);
   }
 }
