@@ -19,7 +19,7 @@ export default class MathCalc extends Character {
   }
 
   get attack() {
-    if (this.stoned === true) {
+    if (this.tempStoned === true) {
       return this.tempAttack * ((110 - (this.distance * 10)) / 100) - Math.log2(this.distance) * 5;
     }
     return this.tempAttack * ((110 - (this.distance * 10)) / 100);
